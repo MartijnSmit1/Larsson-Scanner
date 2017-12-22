@@ -9,16 +9,14 @@ void setup(){
   pinMode(B, INPUT);
   pinMode(C, OUTPUT);
   pinMode(D, OUTPUT);
-  // Figured we make one LED fade on for a "boot up"
-  // look.
+
   digitalWrite(D, LOW);
   while (brightness < 260) {
     analogWrite(C, brightness);
     brightness = brightness + 5;
     delay(50);
   }
-  // finish the cycle since we are at an offset
-  // before going to loop()
+ 
   delay(20);
   pinMode(C, INPUT);
   pinMode(D, INPUT);
@@ -38,7 +36,7 @@ void setup(){
 }
 
 void loop(){
-  // Cycle across the LEDs from right to left
+  
   flashLED(A, B);
   flashLED(A, C);
   flashLED(A, D);
@@ -52,7 +50,7 @@ void loop(){
   flashLED(D, B);
   flashLED(D, C);
   
-  // Cycle across the LEDs from left to right
+  
   flashLED(D, B);
   flashLED(D, A);
   flashLED(C, D);
@@ -65,10 +63,7 @@ void loop(){
   flashLED(A, C);
 }
 
-///////////////////////////////////////////
-// Function to flash LED and change the LED
-// pins back to INPUT.
-///////////////////////////////////////////
+
 void flashLED(int hi, int lo) {
   pinMode(hi, OUTPUT);
   pinMode(lo, OUTPUT); 
